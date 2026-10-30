@@ -9,6 +9,7 @@ body{
     background: linear-gradient(135deg, #667eea, #764ba2);
     min-height: 100vh;
     display: flex;
+    padding: 20px 10px;
     justify-content: center;
     align-items: center;
 }
@@ -26,6 +27,7 @@ body{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 25px;
+    gap: 8px;
 }
 .header h2{
     color: #333;
@@ -40,6 +42,11 @@ body{
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
+}
+
+.header button:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 .days, .dates{
@@ -80,6 +87,28 @@ body{
     color: white;
 }
 
+.dates .selected{
+    outline: 2px solid #764ba2;
+    outline-offset: 2px;
+    font-weight: bold;
+}
+
+.dates .has-event{
+    position: relative;
+}
+
+.dates .has-event::after{
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #e53935;
+}
+
 .dates .empty{
     cursor: default;
 }
@@ -100,9 +129,139 @@ body{
     background: #5367cf;
 }
 
+.selectors{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.selectors select{
+    padding: 9px 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    color: #333;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+}
+
+.selectors select:hover{
+    border-color: #667eea;
+}
+
+.selectors select:focus{
+    border-color: #667eea;
+}
+
+.event-section{
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.event-section h3{
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 19px;
+}
+
+#selectedDate{
+    color: #667eea;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+#eventForm{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#eventForm input,
+#eventForm textarea,
+#eventForm select{
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    outline: none;
+}
+
+#eventForm input:focus,
+#eventForm textarea:focus,
+#eventForm select:focus{
+    border-color: #667eea;
+}
+
+#eventForm textarea{
+    min-height: 75px;
+    resize: vertical;
+}
+
+#eventForm label{
+    font-size: 14px;
+    color: #333;
+}
+
+#eventForm button{
+    padding: 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#eventForm button:hover{
+    background: #5367ef;
+}
+
+#eventList{
+    margin-top: 18px;
+}
+
+.event-card{
+    background: #f1f3ff;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-left: 4px solid #667eea;
+    border-radius: 8px;
+}
+
+.event-card h4{
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.event-card p{
+    color: #666;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.delete-event{
+    margin-top: 10px;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 5px;
+    background: #ffe0e0;
+    color: #d32f2f;
+    cursor: pointer;
+}
+
+
 @media(max-width: 420px) {
     .calendar{
         width: 95%;
         padding: 15px;
+        max-width: 380px;
+    }
+    body{
+        align-items: flex-start;
     }
 }
